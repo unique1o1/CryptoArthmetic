@@ -8,3 +8,4 @@ A simple python script to that returns a list of all possible solution to the eq
 
   `python3 main.py send more money`
   
+#### *If you have a better algorithm for better efficiency, fell free to hit the pull request button
