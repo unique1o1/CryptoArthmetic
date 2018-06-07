@@ -9,8 +9,8 @@ def word_to_number(word, lookup):
 
 
 def solve_problem(words):
-    words = [word.upper() for word in words]
-    letters = list(set(''.join(words))) # Remove duplicate letters and create a list
+    # Remove duplicate letters and create a list
+    letters = list(set(''.join(words)))
     if len(letters) > 10:
         print('Too many distinct letters ({})'.format(len(letters)))
         exit(0)
