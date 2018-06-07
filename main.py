@@ -31,4 +31,5 @@ if __name__ == "__main__":
         print('At least three arguments are required.')
     else:
         for answer in solve_problem(sys.argv[1:]):
-            print("{}+{}={}".format(*answer))
+            print(' + '.join(str(n)
+                             for n in answer[:-1]) + ' = ' + str(answer[-1]))
