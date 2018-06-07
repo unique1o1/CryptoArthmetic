@@ -3,11 +3,6 @@ from itertools import permutations
 import sys
 
 
-def word_to_number(word, lookup):
-    """Convert a word to a number by replacing each letter with a digit"""
-    return int(''.join(str(lookup[letter]) for letter in word))
-
-
 def solve_problem(words):
     # Remove duplicate letters and create a list
     letters = list(set(''.join(words)))
@@ -24,6 +19,11 @@ def solve_problem(words):
 
             if sum(numbers[:-1]) == numbers[-1]:
                 yield numbers
+
+
+def word_to_number(word, lookup):
+    """Convert a word to a number by replacing each letter with a digit"""
+    return int(''.join(str(lookup[letter]) for letter in word))
 
 
 if __name__ == "__main__":
