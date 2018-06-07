@@ -17,16 +17,16 @@ def solve_problem(words):
 
     for perm in permutations(range(10), len(letters)):
         lookup = dict(zip(letters, perm))
+        if all(lookup[i[0]] > 0 for i in words):
+            numbers = [word_to_number(w, lookup) for w in words]
 
-        numbers = [word_to_number(w, lookup) for w in words]
-
-        if sum(numbers[:-1]) == numbers[-1]:
-            yield numbers
+            if sum(numbers[:-1]) == numbers[-1]:
+                yield numbers
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print('At least three arguments required.')
+        print('At least three arguments are required.')
     else:
         for answer in solve_problem(sys.argv[1:]):
             print("{}+{}={}".format(*answer))
