@@ -26,10 +26,3 @@ def word_to_number(word, lookup):
     return int(''.join(str(lookup[letter]) for letter in word))
 
 
-if __name__ == "__main__":
-    if len(sys.argv) < 4:
-        print('At least three arguments are required.')
-    else:
-        for answer in solve_problem(sys.argv[1:]):
-            print(' + '.join(str(n)
-                             for n in answer[:-1]) + ' = ' + str(answer[-1]))
