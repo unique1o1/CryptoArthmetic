@@ -29,7 +29,7 @@ def  solve_problem(list words):
                 yield numbers
 
 
-cdef int word_to_number( word, lookup):
+cdef int word_to_number(str word, dict lookup):
     """Convert a word to a number by replacing each letter with a digit"""
     cdef char letter
     return int(''.join(str(lookup[letter]) for letter in word))
