@@ -3,23 +3,23 @@ from itertools import permutations
 import sys
 
 
-def   solve_problem(list words):
+def  solve_problem(list words):
     # Remove duplicate letters and create a list
-    cdef list letters
-
-    cdef list numbers
+    cdef:
+        list letters
+        tuple perm
+        dict lookup
+        list numbers
     letters = list(set(''.join(words)))
     if len(letters) > 10:
         print('Too many distinct letters ({})'.format(len(letters)))
         exit(0)
-    cdef tuple perm
-    cdef char *i
-    cdef dict lookup
+
     for perm in permutations(range(10), len(letters)):
         # Create a hash value for key value pair i.e letter is key number is value
 
         lookup=dict(zip(letters, perm))
-        
+ 
         if all(lookup[i[0]] > 0 for i in words):
             # array of words converted into numbers i.e [123,123,432]
             
