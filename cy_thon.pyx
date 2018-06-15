@@ -1,4 +1,4 @@
-
+#cython: profile=True
 from itertools import permutations
 import sys
 
@@ -7,14 +7,18 @@ def  solve_problem(list words):
     # Remove duplicate letters and create a list
     cdef:
         list letters
-        tuple perm
-        dict lookup
         list numbers
     letters = list(set(''.join(words)))
     if len(letters) > 10:
         print('Too many distinct letters ({})'.format(len(letters)))
         exit(0)
+    yield from permu(letters,words)
 
+def permu(list letters,list words):
+    cdef:
+        tuple perm
+        list numbers
+        dict lookup
     for perm in permutations(range(10), len(letters)):
         # Create a hash value for key value pair i.e letter is key number is value
 
@@ -23,13 +27,13 @@ def  solve_problem(list words):
         if all(lookup[i[0]] > 0 for i in words):
             # array of words converted into numbers i.e [123,123,432]
             
-            numbers = [word_to_number(w, lookup) for w in words]
+            numbers = [int(''.join(str(lookup[letter]) for letter in w)) for w in words]
 
             if sum(numbers[:-1]) == numbers[-1]:
                 yield numbers
 
 
-cdef int word_to_number(str word, dict lookup):
-    """Convert a word to a number by replacing each letter with a digit"""
-    cdef char letter
-    return int(''.join(str(lookup[letter]) for letter in word))
+# def word_to_number(str word, dict lookup):
+#     """Convert a word to a number by replacing each letter with a digit"""
+#     cdef char letter
+#     return 
