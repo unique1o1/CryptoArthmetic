@@ -1,4 +1,4 @@
-#cython: profile=True
+
 from itertools import permutations
 import sys
 
@@ -7,7 +7,7 @@ def  solve_problem(list words):
     # Remove duplicate letters and create a list
     cdef:
         tuple perm
-     
+        list numbers
         dict lookup
         list letters
 
@@ -26,7 +26,7 @@ def  solve_problem(list words):
  
         if all(lookup[i[0]] > 0 for i in unique_words):
             # array of words converted into numbers i.e [123,123,432]
-            
+            numbers=[]
             for w in unique_words:
                 numbers.extend(word_to_number(w,lookup,words))
             if sum(numbers[:-1]) == numbers[-1]:
